@@ -45,9 +45,9 @@ public class ChannelQueryImpl implements ChannelQuery
     return urlPath;
   }
 
-  public void setHost(String p_host)
+  public void setHost(String pHost)
   {
-    this.host = p_host;
+    this.host = pHost;
   }
 
 }

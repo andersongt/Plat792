@@ -32,7 +32,7 @@ public class ChannelCMSRespositoryImpl implements ChannelCMSRepository
       Handler<AsyncResult<ContentChannels>> resultContnetChannels)
   {
 
-    Map<String, String> params = new HashMap<String, String>();
+    Map<String, String> params = new HashMap<>();
     params.put(FIRST_PARAM_KEY, countryCode);
     this.cmsAnticorruption.getContentChannels(params, resultContnetChannels);
 

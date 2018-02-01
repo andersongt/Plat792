@@ -25,7 +25,6 @@ public class ProxyCmsTranslatorImpl implements ProxyCmsTranslator
   public JsonObject mapRequestBodyGetConentToJson(String payload,
       Map<String, String> pMap)
   {
-
     StrSubstitutor substitutor = new StrSubstitutor(pMap);
     return new JsonObject(substitutor.replace(payload));
   }

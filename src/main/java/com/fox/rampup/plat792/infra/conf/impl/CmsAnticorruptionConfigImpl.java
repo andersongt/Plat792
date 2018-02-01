@@ -14,7 +14,7 @@ import com.fox.rampup.plat792.infra.conf.CmsAnticorruptionConfig;
 
 public  class CmsAnticorruptionConfigImpl implements CmsAnticorruptionConfig
 {
-  public ChannelQueryImpl getChannelQuery;
+  private ChannelQueryImpl getChannelQuery;
   
   public CmsAnticorruptionConfigImpl()
   {
