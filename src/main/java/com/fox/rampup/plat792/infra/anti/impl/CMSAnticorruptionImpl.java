@@ -11,8 +11,6 @@ import com.google.inject.Inject;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Future;
 import io.vertx.core.Handler;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
 import io.vertx.ext.web.client.WebClient;
 
 
@@ -24,6 +22,7 @@ import io.vertx.ext.web.client.WebClient;
  */
 public class CMSAnticorruptionImpl implements CMSAnticorruption
 {
+
   private CmsAnticorruptionConfig cmsAnticorruptionConfig;
   private WebClient webClient;
   private EndpointConfig endPointConfig;
