@@ -1,7 +1,6 @@
 package com.fox.rampup.plat792.infra.anti.impl;
 
 import java.util.Map;
-import java.util.Optional;
 import com.fox.platform.lib.cfg.EndpointConfig;
 import com.fox.platform.lib.fac.WebClientFactory;
 import com.fox.rampup.plat792.dom.ent.ContentChannels;
@@ -9,14 +8,9 @@ import com.fox.rampup.plat792.infra.anti.CMSAnticorruption;
 import com.fox.rampup.plat792.infra.conf.CmsAnticorruptionConfig;
 import com.fox.rampup.plat792.infra.trans.ProxyCmsTranslator;
 import com.google.inject.Inject;
-import com.newrelic.api.agent.Segment;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Future;
 import io.vertx.core.Handler;
-import io.vertx.core.buffer.Buffer;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
-import io.vertx.ext.web.client.HttpResponse;
 import io.vertx.ext.web.client.WebClient;
 
 
@@ -28,7 +22,6 @@ import io.vertx.ext.web.client.WebClient;
  */
 public class CMSAnticorruptionImpl implements CMSAnticorruption
 {
-  private static Logger logger = LoggerFactory.getLogger(CMSAnticorruptionImpl.class);
 
   private CmsAnticorruptionConfig cmsAnticorruptionConfig;
   private WebClient webClient;
