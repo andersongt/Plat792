@@ -11,23 +11,22 @@ import com.fox.rampup.plat792.infra.conf.CmsAnticorruptionConfig;
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public  class CmsAnticorruptionConfigImpl implements CmsAnticorruptionConfig
 {
-  private ChannelQueryImpl getChannelQuery;
+  private ChannelQueryImpl channelQuery;
   
   public CmsAnticorruptionConfigImpl()
   {
-    this.getChannelQuery = new ChannelQueryImpl();
+    this.channelQuery = new ChannelQueryImpl();
   }
   @Override
   public ChannelQuery getChannelQuery()
   {
-    return getChannelQuery;
+    return channelQuery;
   }
   public void setChannelQuery(ChannelQueryImpl chquery)
   {
-    this.getChannelQuery = chquery;
+    this.channelQuery = chquery;
   }
 
   

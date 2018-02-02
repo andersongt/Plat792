@@ -17,7 +17,7 @@ import io.vertx.core.http.HttpServerOptions;
  * @author andersonv
  *
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class RestCMSChannelsVerticleConfigImpl implements RestCMSChannelsVerticleConfig
 {
 

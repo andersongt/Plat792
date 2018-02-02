@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import com.fox.platform.lib.cfg.ConfigLibFactory;
+import com.fox.rampup.plat792.dom.ent.ContentChannels;
 import com.fox.rampup.plat792.infra.conf.ProxyCmsChannelsVerticleConfig;
 import com.fox.rampup.plat792.infra.conf.RestCMSChannelsVerticleConfig;
 import com.fox.rampup.plat792.infra.conf.impl.RestCMSChannelsVerticleConfigImpl;
@@ -50,10 +51,10 @@ public class ProxyCmsTranslatorTest
     proxyCmsTranslatorImpl = new ProxyCmsTranslatorImpl();
 
   }
-  
-/**
- * With valid StringPayload 
- */
+
+  /**
+   * With valid StringPayload
+   */
   @Test
   public void shouldReturnJsonPayloadWithValidString()
   {
@@ -71,7 +72,7 @@ public class ProxyCmsTranslatorTest
     assertEquals(testJsonToSend, correctJsonRequest);
 
   }
-  
+
   /**
    * With invalid StringPayload
    */
@@ -79,8 +80,8 @@ public class ProxyCmsTranslatorTest
   @Test
   public void shouldReturnJsonErrorWithInvalidString()
   {
-    String testBodyPayload =
-        TEST_JSON_INPUTS.getJsonObject("TestInputs").getString("testInvalidStringPayload");
+    String testBodyPayload = TEST_JSON_INPUTS.getJsonObject("TestInputs")
+        .getString("testInvalidStringPayload");
 
     Map<String, String> mockParams = new HashMap<>();
     mockParams.put("country", "GT");
@@ -92,16 +93,38 @@ public class ProxyCmsTranslatorTest
         proxyCmsTranslatorImpl.mapRequestBodyGetConentToJson(testBodyPayload, mockParams);
     assertNotEquals(testJsonToSend, correctJsonRequest);
   }
-  
-  
+
+
   /**
    * 
    */
-  
-  @Test 
-  public void shouldReturnContentChannelsWithValidJson()
+
+  @Test
+  public void shouldReturnContentChannels_withValidJsonResponse()
   {
-    
+    JsonObject jsonResultChannels = new JsonObject(TEST_JSON_INPUTS
+        .getJsonObject("TestInputs").getString("testValidJsonResponseCms"));
+    ContentChannels contentChannels =
+        proxyCmsTranslatorImpl.mapCmsResponseJsonToContentChannels(jsonResultChannels);
+    assertNotNull(contentChannels);
+    contentChannels.getChannels().forEach(channel -> {
+      assertNotNull(channel.getContentId());
+      assertNotNull(channel.getContentFields());
+    });
+  }
+
+  @Test
+  public void shouldReturnErrorWith_withInvalidJsonResponse()
+  {
+    JsonObject jsonResultChannels = new JsonObject(TEST_JSON_INPUTS
+        .getJsonObject("TestInputs").getString("testValidJsonResponseCms"));
+    ContentChannels contentChannels =
+        proxyCmsTranslatorImpl.mapCmsResponseJsonToContentChannels(jsonResultChannels);
+    assertNotNull(contentChannels);
+    contentChannels.getChannels().forEach(channel -> {
+      assertNotNull(channel.getContentId());
+      assertNotNull(channel.getContentFields());
+    });
   }
 
   /**
@@ -120,7 +143,6 @@ public class ProxyCmsTranslatorTest
     {
       return new JsonObject();
     }
-
   }
 
 }
